@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Syne:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Syne", system-ui, sans-serif;
+  --bg: #0C0C0B;
+  --surface: #141412;
+  --border: #272520;
+  --text: #F0EBE3;
+  --muted: #7A7570;
+  --accent: #C8A55A;
+  --accent-light: #E8D4A0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Noise texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ---- REVEAL ANIMATION SYSTEM ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* ---- TYPOGRAPHY ---- */
+.gradient-text {
+  background: linear-gradient(135deg, #E8D4A0 0%, #C8A55A 45%, #9A7B3A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- DECORATIVE LINES ---- */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.accent-line-center {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ---- CURSOR ---- */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+  .custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+    mix-blend-mode: difference;
+  }
+  .custom-cursor.hovering {
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+  }
+}
+
+/* ---- PROJECT CARD ---- */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(200, 165, 90, 0.35);
+  transform: translateY(-2px);
+}
+
+.project-card .card-info {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card:hover .card-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card .card-arrow {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .card-arrow {
+  opacity: 1;
+}
+
+/* ---- SERVICE ITEM ---- */
+.service-item {
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+.service-item:hover {
+  border-color: rgba(200, 165, 90, 0.3);
+}
+.service-item .service-num {
+  transition: color 0.4s ease;
+}
+.service-item:hover .service-num {
+  color: rgba(200, 165, 90, 0.25);
+}
+.service-item .service-name {
+  transition: color 0.3s ease;
+}
+.service-item:hover .service-name {
+  color: var(--accent);
+}
+
+/* ---- STACK PILL ---- */
+.stack-pill {
+  border: 1px solid var(--border);
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+.stack-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200, 165, 90, 0.05);
+}
+
+/* ---- NAV LINK ---- */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+.nav-link:hover { color: var(--accent); }
+.nav-link:hover::after { width: 100%; }
+
+/* ---- CONTACT LINK ---- */
+.contact-link {
+  transition: color 0.25s ease, letter-spacing 0.25s ease;
+}
+.contact-link:hover {
+  color: var(--accent);
+  letter-spacing: 0.25em;
+}
