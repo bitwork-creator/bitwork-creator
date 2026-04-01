@@ -16,25 +16,24 @@ const projects = [
     description:
       "Sitio de conversión con integración WhatsApp directa y SEO local. Diseñado para que el teléfono suene.",
   },
-  /*{
-    id: "02 / 03",
-    name: "SAVELEC",
-    category: "Electricistas · Valencia",
-    url: "#",
-    tech: ["WordPress", "GeneratePress", "SEO Local"],
-    description:
-      "Corporativo con custom post types, WhatsApp bar móvil y posicionamiento local. Autonomía total para el cliente.",
-  },*/
   {
-    id: "02 / 02",
-    name: "Modelo Pagina Web - Peluqueria",
+    id: "02 / 03",
+    name: "PELUQUERIA",
     category: "Peluqueria",
     url: "https://peluqueria-web-template.vercel.app/",
     tech: ["Next.js", "Tailwind CSS", "TypeScript"],
     description:
       "Identidad visual orgánica cálida (verde oliva, crema, terracota), integración con WhatsApp e incorporación de la reserva de Fresha.",
     },
-];
+  {
+    id: "03 / 03",
+    name: "Tu web podría ser la próxima",
+    category: "Diseño a medida. Estrategia. Resultados reales.",
+    url: "#",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript"],
+    description:
+      "Diseñada a medida para atraer clientes reales, automatizar reservas y convertir visitas en conversaciones."
+}];
 
 const services = [
   {
