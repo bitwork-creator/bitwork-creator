@@ -317,7 +317,7 @@ export default function Portfolio() {
           <div className="contact-links">
             {[
               { label: "brenda.creativework@gmail.com", href: "mailto:brenda.creativework@gmail.com" },
-              { label: "WhatsApp · Valencia", href: "https://wa.me/34614885449" },
+              { label: "WhatsApp · Valencia", href: "https://wa.me/5491131250992" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/brenda-c-alaniz-/" },
             ].map(({ label, href }, i) => (
               <a
